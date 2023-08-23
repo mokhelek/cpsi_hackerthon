@@ -53,9 +53,18 @@ const loginRoute = login_route()
 const ticketRoute = ticket_route(db);
 
 
+function isAuthenticated(req, res, next) {
+    if (req.session.user) {
+        return next();
+    }
+    res.redirect('/login');
+  }
 
-app.get("/", (req, res) => {
-    res.render("home");
+
+
+app.get("/", isAuthenticated, (req, res) => {
+    res.redirect(`/admin/${req.session.user.admin}`)
+    // res.render("home");
 });
 
 app.get("/admin/:username",
