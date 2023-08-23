@@ -13,7 +13,7 @@ CREATE TABLE hospital (
     hospital_name TEXT NOT NULL,
     region TEXT NOT NULL,
     address TEXT NOT NULL,
-     password VARCHAR(60) NOT NULL
+    password VARCHAR(60) NOT NULL
 )
 
 CREATE TABLE doctor (

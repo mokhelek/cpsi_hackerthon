@@ -11,9 +11,8 @@ import session from "express-session";
 import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
-
 import admin_service from "./services/admin.js";
-
+import ticket_service from "./services/ticket.js";
 
 
 
@@ -46,22 +45,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const adminService = admin_service(db)
+const ticketService = ticket_service(db);
 
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
 
 
-
 app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.get("/admin/:username", authRouter.requireAdmin, adminRoute.show);
+app.get("/admin/:username",
+	authRouter.requireAdmin,
+	adminRoute.show
+);
 
 app.get("/form-report", (req, res) => {
     res.render("report-form");
 });
+
+app.get("/tickets/:patient_id", (req, res) => {
+	res.render("tickets", {
+		tickets: ticketService.getTickets(req.params.patient_id)
+		});
+	}
+);
 
 app.post("/submit-report", (req, res) => {
     res.redirect("/");
