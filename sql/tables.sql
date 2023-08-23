@@ -32,5 +32,6 @@ CREATE TABLE report (
     FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
     type TEXT NOT NULL,
     datetime TEXT NOT NULL,
-    description TEXT NOT NULL
+    description TEXT NOT NULL,
+	completed BOOLEAN NOT NULL
 )
