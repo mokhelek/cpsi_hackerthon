@@ -52,7 +52,7 @@ const Report = report(db);
 
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
-const userRoute =  user_route(userService)
+const userRoute = 
 const loginRoute = login_route()
 
 app.get("/", (req, res) => {
