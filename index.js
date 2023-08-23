@@ -19,20 +19,20 @@ const app = express();
 dotenv.config();
 
 const connection = {
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
+	connectionString: process.env.DATABASE_URL,
+	ssl: { rejectUnauthorized: false },
 };
 
 const pgp = pgPromise();
 
-const db = pgp(connection); 
+const db = pgp(connection);
 
 app.use(
-    session({
-        secret: "<add a secret string here>",
-        resave: false,
-        saveUninitialized: true,
-    })
+	session({
+		secret: "<add a secret string here>",
+		resave: false,
+		saveUninitialized: true,
+	})
 );
 app.use(flash());
 app.use(express.static("public"));
@@ -51,12 +51,12 @@ const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
 
 app.get("/", (req, res) => {
-    if (req.session.user) {
-      res.redirect(`/admin/${req.session.user.admin}`);
-    } else {
-      res.render("login"); // Render the login or home page for unauthenticated users
-    }
-  });
+	if (req.session.user) {
+		res.redirect(`/admin/${req.session.user.admin}`);
+	} else {
+		res.render("login"); // Render the login or home page for unauthenticated users
+	}
+});
 
 app.get("/admin/:username",
 	authRouter.requireAdmin,
@@ -64,19 +64,19 @@ app.get("/admin/:username",
 );
 
 app.get("/form-report", (req, res) => {
-    res.render("report-form");
+	res.render("report-form");
 });
 
 app.get("/tickets/:patient_id", (req, res) => {
 	res.render("tickets", {
 		tickets: ticketService.getTickets(req.params.patient_id)
-		});
 	});
+});
 
 app.post("/submit-report", async (req, res) => {
-    await Report.addReport(req.body.name, req.body.ID, req.body.type, req.body.Description);
-    res.redirect("/");
-}); 
+	await Report.addReport(req.body.name, req.body.ID, req.body.type, req.body.Description);
+	res.redirect("/");
+});
 
 
 app.get("/", loginRoute.show)
@@ -84,5 +84,5 @@ app.post("/login", authRouter.login)
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
-    console.log("App starting on port", PORT);
+	console.log("App starting on port", PORT);
 });
