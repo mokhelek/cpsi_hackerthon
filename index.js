@@ -57,6 +57,19 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
+app.get("/admin", (req, res) => {
+    res.render("admin");
+});
+
+app.get("/form-report", (req, res) => {
+    res.render("report-form");
+});
+
+app.post("/submit-report", (req, res) => {
+    res.redirect("/");
+});
+
+
 app.get("/login", loginRoute.show)
 app.post("/login", authRouter.login)
 
