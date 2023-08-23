@@ -2,16 +2,23 @@ import express from "express";
 import { engine } from "express-handlebars";
 import bodyParser from "body-parser";
 import pgPromise from "pg-promise";
-
-
+import dotenv from "dotenv"
 
 import flash from "express-flash";
 import session from "express-session";
 
 // instances
 const app = express();
+dotenv.config();
+
+const connection = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
+};
+
 const pgp = pgPromise();
 
+const db = pgp(connection); 
 
 app.use(
     session({
@@ -28,20 +35,11 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
-app.get("/", (req, res)=>{
-    res.render('home')
+app.get("/", (req, res) => {
+    res.render("home");
 });
-
-
-
-
-
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
     console.log("App starting on port", PORT);
 });
-
-
