@@ -24,7 +24,7 @@ describe("services unit testing", function() {
         };
     });
 
-    describe("admin services", () => {
+    describe("admin services", async () => {
         it("should be able to get the hospital name", async () => {
             const adminName = await admin.getAdminByUsername("Constatia Hospital");
             console.log(adminName);
@@ -39,8 +39,6 @@ describe("services unit testing", function() {
             const adminName = await admin.getAdminByUsername("Constatia Hospital");
             console.log(adminName);
         });
-
-        
     })
 });
 
