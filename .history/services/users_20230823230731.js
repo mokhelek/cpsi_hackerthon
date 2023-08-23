@@ -18,12 +18,12 @@ export default function user_services(db) {
       }
     
       // Verify credentials (username and password)
-      async function verifyCredentials(patient_id, password) {
-        const patient = await getPatientByUsername(patient_id);
-        if (patient) {
-          const isPasswordValid = await verifyPassword(password, patient.password);
+      async function verifyCredentials(username, password) {
+        const waiter = await getPatientByUsername(username);
+        if (waiter) {
+          const isPasswordValid = await verifyPassword(password, waiter.password);
           if (isPasswordValid) {
-            return patient;
+            return waiter;
           }
         }
         return null;
