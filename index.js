@@ -12,7 +12,6 @@ import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
 import ticket_route from "./services/ticket.js";
-
 import admin_service from "./services/admin.js";
 
 
@@ -51,6 +50,7 @@ const adminService = admin_service(db)
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
+const ticketRoute = ticket_route(db);
 
 
 
@@ -67,7 +67,7 @@ app.get("/form-report", (req, res) => {
     res.render("report-form");
 });
 
-app.get("/ticket", ticket_route.show);
+app.get("/ticket", ticketRoute.show);
 
 app.post("/submit-report", (req, res) => {
     res.redirect("/");
