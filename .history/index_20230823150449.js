@@ -8,10 +8,9 @@ import flash from "express-flash";
 import session from "express-session";
 
 
-import admin_route from "./routes/admin.js";
-import login_route from "./routes/login.js";
+import admin_route from "./routes/admin";
 
-import adminService from "./services/admin.js";
+import adminService from "./services/admin";
 
 
 // instances
@@ -42,16 +41,11 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-const loginRoute = login_route()
-
-
-
 app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.get("/login", loginRoute.show)
+app.get("/login", )
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
