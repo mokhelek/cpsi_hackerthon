@@ -34,8 +34,7 @@ export default function admin_service(db) {
 
     return {
         getAdminByUsername,
-        verifyPassword,
-        verifyCredentials
+        verifyPassword
     }
 
 }
