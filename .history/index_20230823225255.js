@@ -10,7 +10,6 @@ import session from "express-session";
 import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
-import user_route from "./routes/user.js";
 
 import admin_service from "./services/admin.js";
 import user_services from "./services/users.js";
@@ -52,7 +51,6 @@ const Report = report(db);
 
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
-const userRoute =  user_route(userService)
 const loginRoute = login_route()
 
 app.get("/", (req, res) => {
@@ -67,7 +65,6 @@ app.get("/admin/:username",
 	authRouter.requireAdmin,
 	adminRoute.show
 );
-app.get("/patients/:username", userRoute.show);
 
 app.get("/form-report", (req, res) => {
 	res.render("report-form");
@@ -81,7 +78,7 @@ app.get("/tickets/:patient_id", (req, res) => {
 
 app.post("/submit-report", async (req, res) => {
 	console.log(req.body.name, req.body.patientID, req.body.type, req.body.Description)
-    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime, req.body.appointed);
+    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description);
     res.redirect("/form-report");
 }); 
 

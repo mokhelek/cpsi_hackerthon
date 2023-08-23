@@ -4,7 +4,7 @@ export default function user_route() {
 
     try {
       // Pass the daysOfWeek and timeSlots arrays to the template, along with username and schedule
-      res.render("patients", { username });
+      res.render("users", { username });
     } catch (error) {
       console.error(error);
       res.redirect("/");

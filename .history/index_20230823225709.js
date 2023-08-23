@@ -67,7 +67,6 @@ app.get("/admin/:username",
 	authRouter.requireAdmin,
 	adminRoute.show
 );
-app.get("/patients/:username", userRoute.show);
 
 app.get("/form-report", (req, res) => {
 	res.render("report-form");
@@ -81,7 +80,7 @@ app.get("/tickets/:patient_id", (req, res) => {
 
 app.post("/submit-report", async (req, res) => {
 	console.log(req.body.name, req.body.patientID, req.body.type, req.body.Description)
-    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime, req.body.appointed);
+    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description);
     res.redirect("/form-report");
 }); 
 
