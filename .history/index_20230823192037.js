@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
     if (req.session.user) {
       res.redirect(`/admin/${req.session.user.admin}`);
     } else {
-      res.render("login"); // Render the login or home page for unauthenticated users
+      res.render("home"); // Render the login or home page for unauthenticated users
     }
   });
 
