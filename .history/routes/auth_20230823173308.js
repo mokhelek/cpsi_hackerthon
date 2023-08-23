@@ -16,14 +16,7 @@ export default function auth_route(adminService) {
       res.render('admin', { error: 'Invalid credentials' });
     }
 
-    function requireAdmin(req, res, next) {
-      if (!req.session.adminUsername) {
-        // If the user is not logged in as an admin, redirect to the login page
-        return res.redirect('/login');
-      }
-      next(); // If logged in as an admin, continue to the next middleware or route handler
-    }
-    
+
   
   
     async function logout(req, res) {
@@ -39,8 +32,7 @@ export default function auth_route(adminService) {
   
     return {
       login,
-      logout,
-      requireAdmin
+      logout
     };
   }
   

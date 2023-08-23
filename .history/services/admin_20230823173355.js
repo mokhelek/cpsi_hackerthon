@@ -8,8 +8,8 @@ export default function admin_service(db) {
 
 
 
-    async function getAdminByUsername(hospital_name) {
-        return await db.oneOrNone('SELECT * FROM hospital WHERE hospital_name = $1', [hospital_name])
+    async function getAdminByUsername(hospital_id) {
+        return await db.oneOrNone('SELECT * FROM hospital WHERE hospital_name = $1', [hospital_id])
     }
 
 

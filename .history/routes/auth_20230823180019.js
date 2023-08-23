@@ -39,8 +39,7 @@ export default function auth_route(adminService) {
   
     return {
       login,
-      logout,
-      requireAdmin
+      logout
     };
   }
   
