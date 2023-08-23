@@ -74,9 +74,9 @@ app.get("/tickets/:patient_id", (req, res) => {
 });
 
 app.post("/submit-report", async (req, res) => {
-	await Report.addReport(req.body.name, req.body.ID, req.body.type, req.body.Description);
-	res.redirect("/");
-});
+    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, false);
+    res.redirect("/");
+}); 
 
 
 app.get("/", loginRoute.show)
