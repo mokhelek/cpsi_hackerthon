@@ -19,7 +19,7 @@ export default function auth_route(adminService) {
 
       const patient = await patientService.verifyCredentials(username, password);
       if (patient) {
-        return res.redirect(`/patient/${username}`);
+        return res.redirect(`/waiters/${username}`);
       }
   
       // Render the login page with an error message if credentials are not valid
