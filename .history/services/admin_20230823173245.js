@@ -40,6 +40,7 @@ export default function admin_service(db) {
         getAdminByUsername,
         verifyPassword,
         verifyCredentials,
+        addAdmin
     }
 
 }

@@ -4,9 +4,6 @@ import bcrypt from 'bcrypt'
 
 export default function admin_service(db) {
 
-    const saltRounds = 10;
-
-
 
     async function getAdminByUsername(hospital_id) {
         return await db.oneOrNone('SELECT * FROM hospital WHERE hospital_name = $1', [hospital_id])
@@ -15,6 +12,7 @@ export default function admin_service(db) {
 
     async function verifyPassword(password, hash) {
         return new Promise((resolve, reject) => {
+            console.log("Comparing password:", password, "with hash:", hash);
             bcrypt.compare(password, hash, function(err, result) {
                 if (err) reject(err);
                 resolve(result)
@@ -23,7 +21,7 @@ export default function admin_service(db) {
     }
 
     async function verifyCredentials(username, password) {
-        
+        console.log("Verifying credentials for username:", username);
         const admin = await getAdminByUsername(username);
         if (admin) {
           const isPasswordValid = await verifyPassword(password, admin.password);
@@ -39,7 +37,7 @@ export default function admin_service(db) {
     return {
         getAdminByUsername,
         verifyPassword,
-        verifyCredentials,
+        verifyCredentials
     }
 
 }

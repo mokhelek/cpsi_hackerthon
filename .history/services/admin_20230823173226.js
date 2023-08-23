@@ -6,6 +6,12 @@ export default function admin_service(db) {
 
     const saltRounds = 10;
 
+    async function addAdmin(hospital_name, password) {
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      // Save the hospital_name and hashedPassword to the database
+      // You'll need to write the appropriate SQL query here
+      return await db.one('INSERT INTO hospital (hospital_name, password) VALUES ($1, $2) RETURNING *', [hospital_name, hashedPassword]);
+    }
 
 
     async function getAdminByUsername(hospital_id) {
@@ -40,6 +46,7 @@ export default function admin_service(db) {
         getAdminByUsername,
         verifyPassword,
         verifyCredentials,
+        addAdmin
     }
 
 }
