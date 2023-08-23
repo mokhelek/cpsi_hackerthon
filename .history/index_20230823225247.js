@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const adminService = admin_service(db)
-const userService = user_services(db)
+const userService = 
 const ticketService = ticket_service(db);
 const Report = report(db);
 
