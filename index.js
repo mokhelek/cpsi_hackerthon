@@ -7,6 +7,10 @@ import dotenv from "dotenv"
 import flash from "express-flash";
 import session from "express-session";
 
+// factory functions modules
+import admin from "./services/admin.js";
+import users from "./services/users.js";
+
 // instances
 const app = express();
 dotenv.config();
