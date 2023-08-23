@@ -2,7 +2,7 @@ import express from "express";
 import { engine } from "express-handlebars";
 import bodyParser from "body-parser";
 import pgPromise from "pg-promise";
-import dotenv from "dotenv";
+import dotenv from "dotenv"
 
 import flash from "express-flash";
 import session from "express-session";
@@ -12,22 +12,20 @@ import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
 import admin_service from "./services/admin.js";
 import ticket_service from "./services/tickets.js";
-import report from "./services/report.js";
+import report from "./services/report.js"
 
 // instances
 const app = express();
 dotenv.config();
 
 const connection = {
-	connectionString: process.env.DATABASE_URL,
-	ssl: { rejectUnauthorized: false },
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
 };
 
 const pgp = pgPromise();
 
-const db = pgp(connection);
+const db = pgp(connection); 
 
 app.use(
     session({
@@ -44,13 +42,13 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const adminService = admin_service(db);
+const adminService = admin_service(db)
 const ticketService = ticket_service(db);
 const Report = report();
 
-const authRouter = auth_route(adminService);
-const adminRoute = admin_route(adminService);
-const loginRoute = login_route();
+const authRouter = auth_route(adminService)
+const adminRoute = admin_route(adminService)
+const loginRoute = login_route()
 
 app.get("/", (req, res) => {
     if (req.session.user) {
@@ -60,7 +58,10 @@ app.get("/", (req, res) => {
     }
   });
 
-app.get("/admin/:username", authRouter.requireAdmin, adminRoute.show);
+app.get("/admin/:username",
+	authRouter.requireAdmin,
+	adminRoute.show
+);
 
 app.get("/form-report", (req, res) => {
     res.render("report-form");
@@ -72,17 +73,18 @@ app.get("/tickets/:patient_id", (req, res) => {
 		});
 	});
 
-app.get("/find_ticket", (req, res) => {
-  res.render("find_ticket"); // Assuming the view file is named "find_ticket"
-});
+    app.get("/find_ticket", (req, res) => {
+        res.render("find_ticket"); // Assuming the view file is named "find_ticket"
+      });
 
 app.post("/submit-report", async (req, res) => {
     await Report.addReport(req.body.name, req.body.ID, req.body.type, req.body.Description);
     res.redirect("/");
 }); 
 
-app.get("/", loginRoute.show);
-app.post("/login", authRouter.login);
+
+app.get("/", loginRoute.show)
+app.post("/login", authRouter.login)
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
