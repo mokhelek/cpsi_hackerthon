@@ -7,12 +7,11 @@ import dotenv from "dotenv"
 import flash from "express-flash";
 import session from "express-session";
 
-
 import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
 import admin_service from "./services/admin.js";
-import ticket_service from "./services/ticket.js";
+import ticket_service from "./services/tickets.js";
 
 // instances
 const app = express();
