@@ -27,7 +27,23 @@ export default function admin_route(admin_service) {
 
 
     async function show(req, res) {
-        res.render("admin");
+        const username = req.params.username;
+        const waiters = await admin_service.listWaiters();
+        const availableDays = await waiter_service.getAvailableDays();
+      
+        // Constructing the schedule object
+        const schedule = {
+          'lunch': { 'mon': [], 'tue': [], 'wed': [], 'thu': [], 'fri': [], 'sat': [], 'sun': [] },
+          'supper': { 'mon': [], 'tue': [], 'wed': [], 'thu': [], 'fri': [], 'sat': [], 'sun': [] },
+        };
+      
+        availableDays.forEach((shift) => {
+          const time_slot_key = shift.time_slot === 'lunch' ? 'lunch' : 'supper';
+          const day_key = shift.day.slice(0, 3).toLowerCase();
+          schedule[time_slot_key][day_key] = shift.usernames.join(', ');
+        });
+      
+        res.render("admin", { username, waiters, schedule });
       }
 
     return {

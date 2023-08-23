@@ -27,7 +27,10 @@ export default function admin_route(admin_service) {
 
 
     async function show(req, res) {
-        res.render("admin");
+        const username = req.params.username;
+     
+      
+        res.render("admin", { username});
       }
 
     return {
