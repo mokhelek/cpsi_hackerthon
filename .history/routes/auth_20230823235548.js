@@ -1,7 +1,7 @@
 export default function auth_route(patientService, userService) {
   async function login(req, res) {
     const { username, password } = req.body;
-  
+
     // Verify credentials in the admin table
     const admin = await patientService.verifyCredentials(username, password);
     if (admin) {
@@ -10,16 +10,15 @@ export default function auth_route(patientService, userService) {
       req.session.user = { admin: username };
       return res.redirect(`/admin/${username}`);
     }
-  
-    const patient = await userService.verifyCredentials(username, password);
+
+    const patient = await userRoute.verifyCredentials(username, password);
     if (patient) {
-      return res.render('patients', { username }); // Render the patient handlebar
+      return res.redirect(`/patient/${username}`);
     }
-  
+
     // Render the login page with an error message if credentials are not valid
     res.render('login', { error: 'Invalid credentials' });
   }
-  
 
     function requireAdmin(req, res, next) {
       if (!req.session.adminUsername) {
