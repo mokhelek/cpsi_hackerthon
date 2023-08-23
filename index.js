@@ -56,11 +56,13 @@ app.get("/", (req, res) => {
 
 
 
-
-
-
 app.get("/report", (req, res) => {
     res.render("report-form");
+});
+
+
+app.post("/submit-report", (req, res) => {
+    res.redirect('/')
 });
 
 
