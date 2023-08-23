@@ -20,12 +20,13 @@ CREATE TABLE doctor (
     name TEXT NOT NULL
 )
 
+
 CREATE TABLE report (
     report_id SERIAL NOT NULL PRIMARY KEY,
     patient_id VARCHAR(13),
     FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
     doctor_id VARCHAR(13),
-    FOREIGN KEY (doctor_id) REFERENCES hospital(hospital_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
     type TEXT NOT NULL,
     date TEXT NOT NULL,
     description TEXT NOT NULL
