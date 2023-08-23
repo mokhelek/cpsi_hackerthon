@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 
 const adminService = admin_service(db)
 const ticketService = ticket_service(db);
-const Report = report();
+const Report = report(db);
 
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
@@ -74,8 +74,9 @@ app.get("/tickets/:patient_id", (req, res) => {
 });
 
 app.post("/submit-report", async (req, res) => {
-    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, false);
-    res.redirect("/");
+	console.log(req.body.name, req.body.patientID, req.body.type, req.body.Description)
+    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description);
+    res.redirect("/form-report");
 }); 
 
 
