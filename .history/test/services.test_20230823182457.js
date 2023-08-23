@@ -39,19 +39,5 @@ describe("services unit testing", function() {
             const adminName = await admin.getAdminByUsername("Constatia Hospital");
             console.log(adminName);
         });
-
-        
     })
 });
-
-
-// it("This should test if the incorrect registration number is chosen and it should not add", async function () {
-//     const initialCount = (await registration.get_all_registration_numbers())
-//       .length;
-
-//     await registration.insert_registration_number("CJ312432143");
-
-//     const newCount = (await registration.get_all_registration_numbers()).length;
-
-//     assert.equal(initialCount, newCount);
-//   });
