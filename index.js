@@ -54,6 +54,17 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
+
+
+
+
+
+app.get("/report", (req, res) => {
+    res.render("report-form");
+});
+
+
+
 app.get("/login", )
 
 let PORT = process.env.PORT || 3000;
