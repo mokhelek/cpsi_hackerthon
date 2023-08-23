@@ -13,6 +13,7 @@ import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
 import admin_service from "./services/admin.js";
 import ticket_service from "./services/ticket.js";
+import report from "./services/report.js"
 
 // instances
 const app = express();
@@ -44,6 +45,7 @@ app.use(bodyParser.json());
 
 const adminService = admin_service(db)
 const ticketService = ticket_service(db);
+const Report = report();
 
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
@@ -72,7 +74,8 @@ app.get("/tickets/:patient_id", (req, res) => {
 		});
 	});
 
-app.post("/submit-report", (req, res) => {
+app.post("/submit-report", async (req, res) => {
+    await Report.addReport(req.body.name, req.body.ID, req.body.type, req.body.Description);
     res.redirect("/");
 }); 
 
