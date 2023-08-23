@@ -11,6 +11,7 @@ import session from "express-session";
 import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
 import auth_route from "./routes/auth.js";
+import ticket_route from "./services/ticket.js";
 
 import admin_service from "./services/admin.js";
 
@@ -57,11 +58,16 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.get("/admin/:username", authRouter.requireAdmin, adminRoute.show);
+app.get("/admin/:username",
+	authRouter.requireAdmin,
+	adminRoute.show
+);
 
 app.get("/form-report", (req, res) => {
     res.render("report-form");
 });
+
+app.get("/ticket", ticket_route.show);
 
 app.post("/submit-report", (req, res) => {
     res.redirect("/");
