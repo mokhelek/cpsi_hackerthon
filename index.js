@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 
 const adminService = admin_service(db)
 
-const authRouter = auth_route(adminService);
+const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
 
@@ -65,7 +65,7 @@ app.get("/form-report", (req, res) => {
 
 app.post("/submit-report", (req, res) => {
     res.redirect("/");
-});
+}); 
 
 
 app.get("/login", loginRoute.show)
