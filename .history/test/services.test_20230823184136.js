@@ -1,4 +1,5 @@
 // modules imports
+import assert from "assert";
 import admin_service from "../services/admin.js";
 import pgPromise from "pg-promise";
 import "dotenv/config";
@@ -40,18 +41,13 @@ describe("services unit testing", function() {
             console.log(adminName);
         });
 
-        
+        it("This should test if the incorrect registration number is chosen and it should not add", async function () {
+            const adminName = await admin.getAdminByUsername("Constatia Hospital");
+
+            assert.equal(1, adminName);
+  });
+
     })
 });
 
 
-// it("This should test if the incorrect registration number is chosen and it should not add", async function () {
-//     const initialCount = (await registration.get_all_registration_numbers())
-//       .length;
-
-//     await registration.insert_registration_number("CJ312432143");
-
-//     const newCount = (await registration.get_all_registration_numbers()).length;
-
-//     assert.equal(initialCount, newCount);
-//   });

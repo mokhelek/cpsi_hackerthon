@@ -49,9 +49,18 @@ const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
 
+function isAuthenticated(req, res, next) {
+    if (req.session.user) {
+        return next();
+    }
+    res.redirect('/login');
+  }
 
-app.get("/", (req, res) => {
-    res.render("home");
+
+
+app.get("/", isAuthenticated, (req, res) => {
+    res.redirect(`/admin/${req.session.user.admin}`)
+    // res.render("home");
 });
 
 app.get("/admin/:username",

@@ -28,6 +28,7 @@ export default function admin_service(db) {
         if (admin) {
           const isPasswordValid = await verifyPassword(password, admin.password);
           if (isPasswordValid) {
+           
             return admin;
           }
         }

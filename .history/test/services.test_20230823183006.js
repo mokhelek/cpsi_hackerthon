@@ -39,8 +39,6 @@ describe("services unit testing", function() {
             const adminName = await admin.getAdminByUsername("Constatia Hospital");
             console.log(adminName);
         });
-
-        
     })
 });
 

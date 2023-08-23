@@ -7,6 +7,7 @@ export default function auth_route(adminService) {
       if (admin) {
         req.session.adminUsername = username;
         console.log('Redirecting to username:', username);
+         req.session.user = admin; 
         return res.redirect(`/admin/${username}`);
       }
   
