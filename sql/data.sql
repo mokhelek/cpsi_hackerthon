@@ -1,0 +1,12 @@
+
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (00037385367, "tim", "Western Cape", "Khayelitsha Site B", "Zulu", "male", "0767389883"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (76478399922, "zen", "Eastern Cape", "Maclear", "Xhosa", "female", "0678393993"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (75888579484, "tim", "Eastern Cape", "Tsolo mbidlana", "Xhosa", "male", "0783637772"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (96773899999, "sive", "Western Cape", "Khayelitsha Site C", "Zulu", "female", "079382222"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (99738930382, "ted", "Western Cape", "Mandalay", "Zulu", "male", "0723334445"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (63788993937, "tad", "Eastern Cape", "khayelitsha Site C", "xhosa", "male", "0777389883"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (00037385367, "timmy", "Western Cape", "Khayelitsha spine road", "xhosa", "female", "0785565744"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (00037385367, "timmythy", "Eastern Cape", "mitchells plain", "tshwana", "male", "0796768432"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (00037385367, "tod", "Western Cape", "Khayelitsha Site C", "xhosa", "male", "0654638992"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (00037385367, "nic", "Western Cape", "pinelands", "english", "male", "0612345647"),
+INSERT INTO patient (patient_id, name, region, address, language, gender, contact) values (00037385367, "kat", "Freestatee", "pitoli", "tshwana", "male", "0768880044"),
