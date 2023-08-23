@@ -11,7 +11,7 @@ import session from "express-session";
 import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
 
-import admin_service from "./services/admin.js";
+import adminService from "./services/admin.js";
 
 
 // instances
@@ -42,10 +42,9 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const adminService = admin_service(db)
 
 
-const adminRoute = admin_route(adminService)
+const adminRoute = admin_route()
 const loginRoute = login_route()
 
 

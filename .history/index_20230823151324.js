@@ -42,10 +42,10 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const adminService = admin_service(db)
+const admin_service = 
 
 
-const adminRoute = admin_route(adminService)
+const adminRoute = admin_route()
 const loginRoute = login_route()
 
 
