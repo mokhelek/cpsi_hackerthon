@@ -67,7 +67,7 @@ app.get("/admin/:username",
 	authRouter.requireAdmin,
 	adminRoute.show
 );
-app.get("/patients/:username", userRoute.show);
+app.get("/waiters/:username", waiterRoute.show);
 
 app.get("/form-report", (req, res) => {
 	res.render("report-form");
