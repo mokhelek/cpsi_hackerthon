@@ -10,11 +10,8 @@ import session from "express-session";
 
 import admin_route from "./routes/admin.js";
 import login_route from "./routes/login.js";
-import auth_route from "./routes/auth.js";
 
 import admin_service from "./services/admin.js";
-
-
 
 
 // instances
@@ -47,7 +44,7 @@ app.use(bodyParser.json());
 
 const adminService = admin_service(db)
 
-const authRouter = auth_route(adminService);
+
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
 
@@ -57,19 +54,7 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.get("/admin/:username", adminRoute.show);
-
-app.get("/form-report", (req, res) => {
-    res.render("report-form");
-});
-
-app.post("/submit-report", (req, res) => {
-    res.redirect("/");
-});
-
-
-app.get("/login", loginRoute.show)
-app.post("/login", authRouter.login)
+app.get("/login", )
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {

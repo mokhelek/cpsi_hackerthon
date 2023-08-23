@@ -27,11 +27,8 @@ export default function admin_route(admin_service) {
 
 
     async function show(req, res) {
-        const username = req.params.username; // Extract the username from the URL
-        // Render the admin view, passing the username
-        res.render("admin", { username: username });
-    }
-    
+        res.render("admin");
+      }
 
     return {
         add,

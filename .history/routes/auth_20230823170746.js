@@ -1,6 +1,5 @@
 export default function auth_route(adminService) {
     async function login(req, res) {
-        console.log("Login function called");
       const { username, password } = req.body;
   
       // Verify credentials in the admin table

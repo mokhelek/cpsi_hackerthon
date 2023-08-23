@@ -57,7 +57,9 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.get("/admin/:username", adminRoute.show);
+app.get("/admin/:username", (req, res) => {
+    res.render("admin");
+});
 
 app.get("/form-report", (req, res) => {
     res.render("report-form");

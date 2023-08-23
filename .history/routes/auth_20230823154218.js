@@ -1,13 +1,11 @@
 export default function auth_route(adminService) {
     async function login(req, res) {
-        console.log("Login function called");
       const { username, password } = req.body;
   
       // Verify credentials in the admin table
       const admin = await adminService.verifyCredentials(username, password);
       if (admin) {
         req.session.adminUsername = username;
-        console.log('Redirecting to username:', username);
         return res.redirect(`/admin/${username}`);
       }
   
@@ -16,8 +14,6 @@ export default function auth_route(adminService) {
       // Render the login page with an error message if credentials are not valid
       res.render('admin', { error: 'Invalid credentials' });
     }
-
-
   
   
     async function logout(req, res) {

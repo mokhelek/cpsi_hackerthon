@@ -20,7 +20,6 @@ export default function admin_service(db) {
     }
 
     async function verifyCredentials(username, password) {
-        console.log("Verifying credentials for username:", username);
         const admin = await getAdminByUsername(username);
         if (admin) {
           const isPasswordValid = await verifyPassword(password, admin.password);
