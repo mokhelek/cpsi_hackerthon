@@ -7,12 +7,9 @@ import dotenv from "dotenv"
 import flash from "express-flash";
 import session from "express-session";
 
-
-import admin_route from "./routes/admin.js";
-import login_route from "./routes/login.js";
-
-import adminService from "./services/admin.js";
-
+// factory functions modules
+import admin from "./services/admin.js";
+import users from "./services/users.js";
 
 // instances
 const app = express();
