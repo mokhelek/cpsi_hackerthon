@@ -50,7 +50,6 @@ const adminService = admin_service(db)
 const authRouter = auth_route(adminService)
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
-const ticketRoute = ticket_route(db);
 
 
 
@@ -67,7 +66,12 @@ app.get("/form-report", (req, res) => {
     res.render("report-form");
 });
 
-app.get("/ticket", ticketRoute.show);
+app.get("/tickets/:patient_id", (req, res) => {
+	res.render("tickets", {
+		tickets: ticket.getTickets(req.params.patient_id)
+		});
+	}
+);
 
 app.post("/submit-report", (req, res) => {
     res.redirect("/");
