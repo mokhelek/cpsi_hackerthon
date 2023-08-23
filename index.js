@@ -74,7 +74,11 @@ app.get("/tickets/:patient_id", (req, res) => {
 	});
 
 app.post("/submit-report", async (req, res) => {
+<<<<<<< HEAD
     await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description);
+=======
+    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, false);
+>>>>>>> f15156653984c9613213d9fd888c056d7722b7f6
     res.redirect("/");
 }); 
 
