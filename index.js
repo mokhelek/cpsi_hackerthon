@@ -14,8 +14,6 @@ import auth_route from "./routes/auth.js";
 import admin_service from "./services/admin.js";
 import ticket_service from "./services/ticket.js";
 
-
-
 // instances
 const app = express();
 dotenv.config();
@@ -69,8 +67,7 @@ app.get("/tickets/:patient_id", (req, res) => {
 	res.render("tickets", {
 		tickets: ticketService.getTickets(req.params.patient_id)
 		});
-	}
-);
+	});
 
 app.post("/submit-report", (req, res) => {
     res.redirect("/");
