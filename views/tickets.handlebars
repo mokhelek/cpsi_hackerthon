@@ -1,8 +1,10 @@
 <div class="container">
-	<h1 class="user">{{name}}</h1>
+	<h1 class="user">Tickets for {{name}}</h1>
+
 	{{#each tickets}}
 	<div class="type {{type}}">{{type}}</div>
 	<div class="datetime">Date: <span>{{datetime}}</span></div>
 	<div class="description">Description: <span>{{description}}</span></div>
+	<button></button>
 	{{/each}}
 </div>

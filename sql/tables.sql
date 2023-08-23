@@ -23,7 +23,6 @@ CREATE TABLE doctor (
     name TEXT NOT NULL
 )
 
-
 CREATE TABLE report (
     report_id SERIAL NOT NULL PRIMARY KEY,
     patient_id VARCHAR(13),
