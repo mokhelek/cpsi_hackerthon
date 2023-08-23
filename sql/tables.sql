@@ -6,6 +6,7 @@ CREATE TABLE patient (
 	language TEXT NOT NULL,
 	gender TEXT NOT NULL,
 	contact TEXT NOT NULL
+    password VARCHAR(60) NOT NULL
 )
 
 CREATE TABLE hospital (

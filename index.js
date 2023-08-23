@@ -81,7 +81,7 @@ app.get("/tickets/:patient_id", (req, res) => {
 
 app.post("/submit-report", async (req, res) => {
 	console.log(req.body.name, req.body.patientID, req.body.type, req.body.Description)
-    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description);
+    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime, req.body.appointed);
     res.redirect("/form-report");
 }); 
 
