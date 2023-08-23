@@ -58,7 +58,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", loginRoute.show)
-app.post("/login", authRouter.login)
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {

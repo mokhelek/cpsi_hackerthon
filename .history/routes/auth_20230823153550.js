@@ -12,10 +12,8 @@ export default function auth_route(adminService) {
       // Verify credentials in the waiters table
     
       // Render the login page with an error message if credentials are not valid
-      res.render('admin', { error: 'Invalid credentials' });
+      res.render('login', { error: 'Invalid credentials' });
     }
-
-    
   
   
     async function logout(req, res) {

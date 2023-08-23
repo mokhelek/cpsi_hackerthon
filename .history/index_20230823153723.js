@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 
 const adminService = admin_service(db)
 
-const authRouter = auth_route(adminService);
+const authRouter = auth_route(admin_service);
 const adminRoute = admin_route(adminService)
 const loginRoute = login_route()
 
@@ -57,8 +57,7 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.get("/login", loginRoute.show)
-app.post("/login", authRouter.login)
+app.get("/login", )
 
 let PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
