@@ -17,11 +17,12 @@
     {{#if nurse}}
         {{#each tickets}}
             <form action="/complete/{{report_id}}" method="post">
-                <div class="type {{type}}">{{type}}</div>
-                <div class="datetime">Date: <span>{{datetime}}</span></div>
-                <div class="description">Description: <span>{{description}}</span></div>
-                <button type="submit" class="btn btn-outline-primary btn-sm">Complete</button>
-
+                <div class="{{completedTickets}}" role="alert">
+                    <div class="type {{type}}">{{type}}</div>
+                    <div class="datetime">Date: <span>{{datetime}}</span></div>
+                    <div class="description">Description: <span>{{description}}</span></div>
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Complete</button>
+                </div>
             </form>
         {{/each}}
     {{/if}}
