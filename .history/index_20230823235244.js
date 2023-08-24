@@ -79,12 +79,6 @@ app.get("/tickets/:patient_id", (req, res) => {
 	});
 });
 
-app.get("/find_ticket", (req, res) => {
-	const ticketId = req.body.ticketId;
-	ticketService.getTickets(ticketId);
-	res.redirect("ticket/")
-});
-
 app.post("/submit-report", async (req, res) => {
 	console.log(req.body.name, req.body.patientID, req.body.type, req.body.Description)
     await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime, req.body.appointed);
