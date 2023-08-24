@@ -8,7 +8,9 @@ export default function (db) {
 	};
 
 	async function getAppointment(doctor_id, type) {
+		console.log("DOCTOR DETAILS**** ", doctor_id,type )
 		const appointments = await db.manyOrNone(`Select * FROM report WHERE doctor_id = $1 AND type = $2`, [doctor_id, type]);
+		console.log("APPOINTMENTS ****** ", appointments)
 		return appointments;
 	};
 

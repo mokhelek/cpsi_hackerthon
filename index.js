@@ -113,10 +113,9 @@ app.post("/update/:report_id", async (req, res)=>{
 	res.redirect(`/form-report`)
 })
 
-app.get("/appointment", async (req, res) => {
-	console.log(await ticketService.getAppointment(req.session.adminUsername, "appointment"));
+app.get("/doctor/appointments", async (req, res) => {
 	res.render("appointment", {
-		appointment: await ticketService.getAppointment(req.session.adminUsername, "appointment")
+		appointment: await ticketService.getAppointment(req.session.adminUsername, "Prescription")
 	});
 });
 
