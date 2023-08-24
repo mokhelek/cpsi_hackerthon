@@ -17,13 +17,6 @@ CREATE TABLE hospital (
     
 )
 
-CREATE TABLE doctor (
-    doctor_id VARCHAR(13) NOT NULL PRIMARY,
-    hospital_id INT,
-    FOREIGN KEY (hospital_id) REFERENCES hospital(hospital_id)
-    name TEXT NOT NULL
-)
-
 CREATE TABLE admin (
     admin_id VARCHAR(13) NOT NULL PRIMARY,
     department TEXT NOT NULL,
