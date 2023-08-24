@@ -3,6 +3,11 @@ import bcrypt from 'bcrypt'
 
 export default function user_services(db) {
 
+  async function getUsername(patient_id){
+    const query = `SELECT name FROM patient WHERE patient_id = '${patient_id}'`;
+    return await db.oneOrNone(query);
+  }
+
     async function getPatientByUsername(patient_id) {
         return await db.oneOrNone('SELECT * FROM patient WHERE patient_id = $1', [patient_id]);
       }
@@ -32,6 +37,7 @@ export default function user_services(db) {
 
       return {
         getPatientByUsername,
-        verifyCredentials
+        verifyCredentials,
+        getUsername
       }
 }

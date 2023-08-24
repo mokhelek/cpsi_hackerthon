@@ -10,12 +10,11 @@ export default function auth_route(admin_service, userService) {
                 req.session.adminUsername = username;
 
                 if (admin.role === "Doctor") {
-                
-                    // let tickets = await 
-
-                    return res.render("tickets",{ });
+                    req.session.role = admin.role ;
+                    return res.render("admin");
                 } else if (admin.role === "Nurse") {
-                    return res.render("tickets");
+                    req.session.role = admin.role ;
+                    return res.render("admin");
                 }
             } else {
                 return res.status(401).send("Invalid password");
