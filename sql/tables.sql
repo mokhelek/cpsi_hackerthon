@@ -14,7 +14,7 @@ CREATE TABLE hospital (
     hospital_name TEXT NOT NULL,
     region TEXT NOT NULL,
     address TEXT NOT NULL,
-    password VARCHAR(60) NOT NULL
+    
 )
 
 CREATE TABLE doctor (
@@ -23,6 +23,17 @@ CREATE TABLE doctor (
     FOREIGN KEY (hospital_id) REFERENCES hospital(hospital_id)
     name TEXT NOT NULL
 )
+
+CREATE TABLE admin (
+    admin_id VARCHAR(13) NOT NULL PRIMARY,
+    department TEXT NOT NULL,
+    role TEXT NOT NULL,
+    hospital_id INT,
+    FOREIGN KEY (hospital_id) REFERENCES hospital(hospital_id)
+    name TEXT NOT NULL,
+    password VARCHAR(60) NOT NULL
+)
+
 
 CREATE TABLE report (
     report_id SERIAL NOT NULL PRIMARY KEY,
