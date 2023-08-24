@@ -1,4 +1,4 @@
-export default function auth_route(admin_service, userService) {
+export default function auth_route(patientService, userService) {
   async function login(req, res) {
     const { username, password } = req.body;
     const admin = await admin_service.getRoleByAdminId(username);
