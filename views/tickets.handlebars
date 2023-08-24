@@ -3,12 +3,22 @@
 
     {{#if doctor}}
         {{#each tickets}}
+<<<<<<< HEAD
             <form action="update/{{ticket_id}}" method="post">
                 <div class="type {{type}}">{{type}}</div>
                 <div class="datetime">Date: <span>{{datetime}}</span></div>
                 <div class="description">Description: <span>{{description}}</span></div>
             
                 <button type="submit" class="btn btn-outline-primary btn-sm" >Update</button>
+=======
+            <form action="/update/{{report_id}}" method="post">
+                <div class="type {{type}}">{{type}}</div>
+                <div class="datetime">Date: <span>{{datetime}}</span></div>
+                <div class="description">Description: <span>{{description}}</span></div>
+              
+                <button type="submit" class="btn btn-outline-primary btn-sm" >Follow Up</button>
+
+>>>>>>> ce04fde29cc02f741d92787248fc325e527c95ee
             </form>
         {{/each}}
     {{/if}}
