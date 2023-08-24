@@ -10,11 +10,10 @@ export default function auth_route(admin_service, userService) {
                 req.session.adminUsername = username;
 
                 if (admin.role === "Doctor") {
-                
-                    // let tickets = await 
-
-                    return res.render("tickets",{ });
+                    req.session.role = admin.role ;
+                    return res.render("admin");
                 } else if (admin.role === "Nurse") {
+                    req.session.role = admin.role ;
                     return res.render("tickets");
                 }
             } else {

@@ -76,19 +76,24 @@ app.get("/form-report", (req, res) => {
 	res.render("report-form");
 });
 
-app.get("/tickets/:patient_id", (req, res) => {
+app.get("/tickets/:patient_id", async (req, res) => {
 	res.render("tickets", {
-		tickets: ticketService.getTickets(req.params.patient_id, req.session.user.admin),
-		nurse: req.session.user.admin == 'nurse' ? true : false,
-		patient: req.session.user.admin == 'patient' ? true : false,
-		doctor: req.session.user.admin == 'doctor' ? true : false,
+		tickets: await ticketService.getTickets(req.params.patient_id, req.session.role),
+		nurse: req.session.role == 'Nurse' ? true : false,
+		patient: req.session.role == 'patient' ? true : false,
+		doctor: req.session.role == 'Doctor' ? true : false,
+		name : "",
 	});
 });
 
-// app.get("/find_ticket", (req, res) => {
-// 	const ticketId = req.body.ticketId;
-// 	res.redirect(`ticket/:${ticketId}`)
-// });
+app.get("/find_ticket", (req, res) => {
+	res.render('find_ticket')
+});
+
+app.post("/search_ticket", (req, res) => {
+	let patientID = req.body.patientId
+	res.redirect(`tickets/${patientID}`)
+});
 
 app.post("/submit-report", async (req, res) => {
     await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime);

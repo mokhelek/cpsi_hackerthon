@@ -2,8 +2,8 @@
 	<h1 class="user">Tickets for {{name}}</h1>
 
 	{{#each tickets}}
-	<form action="complete/:{{this.ticket_id}}" method="post">
-		<div class="type {{this.type}}">{{type}}</div>
+	<form action="complete/:{{ticket_id}}" method="post">
+		<div class="type {{type}}">{{type}}</div>
 		<div class="datetime">Date: <span>{{datetime}}</span></div>
 		<div class="description">Description: <span>{{description}}</span></div>
 		{{#if nurse}}<button type="submit">Complete</button>{{/if}}
