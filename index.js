@@ -99,7 +99,8 @@ app.post("/search_ticket", (req, res) => {
 });
 
 app.post("/submit-report", async (req, res) => {
-    await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime);
+	// let typeValue = 
+    await Report.addReport(req.body.patientID, req.session.adminUsername ,req.body.type, req.body.Description, req.body.appointmentTime);
     res.redirect("/form-report");
 }); 
 
@@ -115,7 +116,7 @@ app.post("/update/:report_id", async (req, res)=>{
 
 app.get("/doctor/appointments", async (req, res) => {
 	res.render("appointment", {
-		appointment: await ticketService.getAppointment(req.session.adminUsername, "Prescription")
+		appointment: await ticketService.getAppointment(req.session.adminUsername, "Appointment")
 	});
 });
 
