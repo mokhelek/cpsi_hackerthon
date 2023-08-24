@@ -11,7 +11,6 @@ export default function admin_service(db) {
     async function getRoleByAdminId(admin_id) {
         const admin = await db.oneOrNone('SELECT * FROM admin WHERE admin_id = $1', [admin_id]);
         if (admin && (admin.role === 'Doctor' || admin.role === 'Nurse')) {
-            console.log(admin)
           return admin; // Return the entire admin object
         }
         return null;

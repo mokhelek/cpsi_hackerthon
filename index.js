@@ -67,6 +67,7 @@ app.get("/admin/:username",
 	authRouter.requireAdmin,
 	adminRoute.show
 );
+
 app.get("/patients/:username", userRoute.show);
 
 app.get("/form-report", (req, res) => {
@@ -75,9 +76,17 @@ app.get("/form-report", (req, res) => {
 
 app.get("/tickets/:patient_id", (req, res) => {
 	res.render("tickets", {
-		tickets: ticketService.getTickets(req.params.patient_id)
+		tickets: ticketService.getTickets(req.params.patient_id, req.session.user.admin),
+		nurse: req.session.user.admin == 'nurse' ? true : false,
+		patient: req.session.user.admin == 'patient' ? true : false,
+		doctor: req.session.user.admin == 'doctor' ? true : false,
 	});
 });
+
+// app.get("/find_ticket", (req, res) => {
+// 	const ticketId = req.body.ticketId;
+// 	res.redirect(`ticket/:${ticketId}`)
+// });
 
 app.post("/submit-report", async (req, res) => {
     await Report.addReport(req.body.name, req.body.patientID, req.body.type, req.body.Description, req.body.appointmentTime);
