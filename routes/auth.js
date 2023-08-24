@@ -14,7 +14,7 @@ export default function auth_route(admin_service, userService) {
                     return res.render("admin");
                 } else if (admin.role === "Nurse") {
                     req.session.role = admin.role ;
-                    return res.render("tickets");
+                    return res.render("admin");
                 }
             } else {
                 return res.status(401).send("Invalid password");

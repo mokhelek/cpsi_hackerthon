@@ -82,7 +82,7 @@ app.get("/tickets/:patient_id", async (req, res) => {
 		nurse: req.session.role == 'Nurse' ? true : false,
 		patient: req.session.role == 'patient' ? true : false,
 		doctor: req.session.role == 'Doctor' ? true : false,
-		name : "",
+		name : await userService.getUsername(req.params.patient_id)
 	});
 });
 
@@ -100,6 +100,12 @@ app.post("/submit-report", async (req, res) => {
     res.redirect("/form-report");
 }); 
 
+app.post("/complete/:ticket_id", async (req, res)=>{
+	await db.none("UPDATE report SET completed = $1 WHERE report_id = $2", [true, req.params.ticket_id]);
+	let userID = await db.oneOrNone("SELECT patient_id from report WHERE report_id = $1", [req.params.ticket_id]);
+	console.log("USER ID....",userID)
+	res.redirect(`/tickets/${userID.patient_id}`)
+})
 
 app.get("/", loginRoute.show)
 app.post("/login", authRouter.login)
