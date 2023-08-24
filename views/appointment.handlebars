@@ -1,8 +1,8 @@
 <div style="width:65%" class="container">
-    <h1 class="user">Appointment for </h1>
-			
-        <form action="update/{{ticket_id}}" method="post">
-                <div style="margin-bottom: 0.7rem;box-shadow:0 0 6px rgb(178, 178, 178)" class="card card-body">
+    <h1 class="user">Appointment for Doctor</h1>
+	
+        {{#each appointment}}
+            <form action="/complete/{{report_id}}" method="post">
                 <div style="margin-bottom: 0.7rem;box-shadow:0 0 6px rgb(178, 178, 178);border:2px rgba(7, 129, 204, 0.886) solid;background-color:rgba(163, 178, 255, 0.237)" class="card card-body">
             <div class="type {{type}}"> <p style="color: rgb(255, 66, 110);"> &bull; <span style="color: gray;font-size:0.9rem">{{type}}</span></p> </div>
             <div style="margin-top: 0;" class="datetime">
@@ -37,4 +37,6 @@
         </form>
     </div>
 
-</div>
+
+
+    </div>
