@@ -103,8 +103,11 @@ app.post("/submit-report", async (req, res) => {
 app.post("/complete/:ticket_id", async (req, res)=>{
 	await db.none("UPDATE report SET completed = $1 WHERE report_id = $2", [true, req.params.ticket_id]);
 	let userID = await db.oneOrNone("SELECT patient_id from report WHERE report_id = $1", [req.params.ticket_id]);
-	console.log("USER ID....",userID)
 	res.redirect(`/tickets/${userID.patient_id}`)
+})
+
+app.post("/update/:report_id", async (req, res)=>{
+	res.redirect(`/form-report`)
 })
 
 app.get("/", loginRoute.show)
