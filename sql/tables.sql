@@ -33,9 +33,9 @@ CREATE TABLE report (
     patient_id VARCHAR(13),
     FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
     doctor_id VARCHAR(13),
-    FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
     type TEXT NOT NULL,
-    datetime TEXT NOT NULL,
+	name TEXT NOT NULL,
+    time TEXT NOT NULL,
     description TEXT NOT NULL,
 	completed BOOLEAN NOT NULL
 )

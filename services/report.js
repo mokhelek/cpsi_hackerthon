@@ -1,10 +1,12 @@
-export default function handleReport(db){ 
+export default function handleReport(db) {
 
-    async function addReport(patientName,patientId, prescriptionType, description, dateTime ){
-       await db.none(`INSERT INTO report(patient_id,doctor_id,type,time,description,completed) VALUES ($1,$2,$3,$4,$5,$6)`, [patientId,'9818168745012',prescriptionType, dateTime,description,false] );
-    }
+	async function addReport(patient_id, doctor_id, type, description, date_time) {
 
-    return {
-        addReport
-    };
+
+		await db.none(`INSERT INTO report (patient_id, doctor_id, type, time, description, completed) VALUES ($1,$2,$3,$4,$5,$6)`, [patient_id, doctor_id, type, date_time, description, false]);
+	}
+
+	return {
+		addReport
+	};
 }
