@@ -1,27 +1,31 @@
 <style>
-    .form input{ margin-bottom: 1rem; }
-
+	.form input {
+		margin-bottom: 1rem;
+	}
 </style>
 
 <div class="container d-flex justify-content-center">
-    <div class="col-7">
+	<div class="col-7">
 
-        <center> <h2> Patient Report</h2> </center>
+		<center>
+			<h2>Patient Report</h2>
+		</center>
 
-        <form class="form" action="/submit-report" method="post">
-            <input class="form-control" name="name" placeholder="Patient name" type="text" />
-            <input class="form-control" name="patientID" placeholder="Patient ID" type="text" />
-            {{!-- <input class="form-control" name="type" placeholder="Type" type="text" /> --}}
-            <input class="form-control" name="appointmentTime" placeholder="appointment time" type="date" />
-            <input class="form-control" name="appointed" placeholder="appointed" type="text" />
-            <select class="form-control" id="option" name="type" required>
-                <option value="Feedback">Feedback</option>
-                <option value="Prescription">Prescription</option>
-                <option value="Appointment">Appointment</option>
-            </select>
-            <input style="height: 10rem;margin-top:1rem" class="form-control" name="Description" placeholder="Description" type="text" />
-            <br>
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </form>
-    </div>
+		<form class="form" action="/submit-report" method="post">
+			<input class="form-control" name="name" placeholder="Patient name" type="text" />
+			<input class="form-control" name="patientID" placeholder="Patient ID" type="text" />
+			{{!-- <input class="form-control" name="type" placeholder="Type" type="text" /> --}}
+			<input class="form-control" name="appointmentDate" placeholder="appointment date" type="datetime-local" />		
+			<input class="form-control" name="appointed" placeholder="appointed" type="text" />
+			<select class="form-control" id="option" name="type" required>
+				<option value="Feedback">Feedback</option>
+				<option value="Prescription">Prescription</option>
+				<option value="Appointment">Appointment</option>
+			</select>
+			<input style="height: 10rem;margin-top:1rem" class="form-control" name="Description"
+				placeholder="Description" type="text" />
+			<br>
+			<button class="btn btn-primary" type="submit">Submit</button>
+		</form>
+	</div>
 </div>

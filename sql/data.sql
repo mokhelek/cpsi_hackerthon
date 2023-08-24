@@ -15,9 +15,7 @@ INSERT INTO patient (doctor_id, department, role, hospital_id, name, password) v
 INSERT INTO patient (doctor_id, department, role, hospital_id, name, password) values (5678910111213, "Lovina", 'Clinic', 'Nurse', NULL, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
 INSERT INTO patient (doctor_id, department, role, hospital_id, name, password) values (3456789101112, "Dr Samthing", , 'Hospital', 'Doctor', 2, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
 
-INSERT INTO patient (hospital_id, department, role, hospital_id, name, password) values (5678910111213, "Lovina", 'Clinic', 'Nurse', 1, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
-INSERT INTO patient (hospital_id, department, role, hospital_id, name, password) values (3456789101112, "Dr Samthing", , 'Hospital', 'Doctor', 1, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
+INSERT INTO patient (department, role, hospital_id, name, password) values ("Lovina", 'Clinic', 'Nurse', 1, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
+INSERT INTO patient (department, role, hospital_id, name, password) values ("Dr Samthing", , 'Hospital', 'Doctor', 1, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
 
-INSERT INTO report (report_id, , role, hospital_id, name, password) values (1234567891011, "Dr David Jeremiah", 'Hospital', 'Doctor', 1, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
-INSERT INTO patient (doctor_id, department, role, hospital_id, name, password) values (5678910111213, "Lovina", 'Clinic', 'Nurse', NULL, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
-INSERT INTO patient (doctor_id, department, role, hospital_id, name, password) values (3456789101112, "Dr Samthing", , 'Hospital', 'Doctor', 2, '$2b$10$HczQxpCnf.IcZKu8vSp97Oi21f6Oc48XBvkixArHLUNugmMuLFXOy'),
+INSERT INTO report (patient_id, type, datetime, description, completed) values (78910111213, 'Appointment', datetime),
