@@ -4,13 +4,11 @@
     {{#if doctor}}
         {{#each tickets}}
             <form action="update/{{ticket_id}}" method="post">
-                <div class="{{completedTickets}}" role="alert">
-                    <div class="type {{type}}">{{type}}</div>
-                    <div class="datetime">Date: <span>{{datetime}}</span></div>
-                    <div class="description">Description: <span>{{description}}</span></div>
-                
-                    <button type="submit" class="btn btn-outline-primary btn-sm" >Update</button>
-                </div>
+                <div class="type {{type}}">{{type}}</div>
+                <div class="datetime">Date: <span>{{datetime}}</span></div>
+                <div class="description">Description: <span>{{description}}</span></div>
+            
+                <button type="submit" class="btn btn-outline-primary btn-sm" >Update</button>
             </form>
         {{/each}}
     {{/if}}
@@ -18,7 +16,7 @@
     {{#if nurse}}
         {{#each tickets}}
             <form action="/complete/{{report_id}}" method="post">
-                <div class="{{completedTickets}}" role="alert">
+                <div class="{{this}}" role="alert">
                     <div class="type {{type}}">{{type}}</div>
                     <div class="datetime">Date: <span>{{datetime}}</span></div>
                     <div class="description">Description: <span>{{description}}</span></div>

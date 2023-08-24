@@ -78,10 +78,10 @@ app.get("/form-report", (req, res) => {
 
 app.get("/tickets/:patient_id", async (req, res) => {
 	const storedTickets = await ticketService.getTickets(req.params.patient_id, req.session.role);
-	const completedTickets = storedTickets.completed === true ? "alert alert-warning" : "alert alert-success";
+	// const completedTickets = storedTickets.map((record) => record.completed === true ? "alert alert-warning" : "alert alert-success");
 	res.render("tickets", {
 		tickets: storedTickets,
-		completedTickets: completedTickets,
+		// completedTickets: completedTickets,
 		nurse: req.session.role == 'Nurse' ? true : false,
 		patient: req.session.role == 'patient' ? true : false,
 		doctor: req.session.role == 'Doctor' ? true : false,
