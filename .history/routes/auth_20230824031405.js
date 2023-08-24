@@ -1,4 +1,4 @@
-export default function auth_route(admin_service, userService) {
+export default function auth_route(patientService, userService) {
   async function login(req, res) {
     const { username, password } = req.body;
     const admin = await admin_service.getRoleByAdminId(username);
@@ -10,23 +10,26 @@ export default function auth_route(admin_service, userService) {
         req.session.adminUsername = username;
   
         if (admin.role === "Doctor") {
-          return res.render("admin");
+          res.render("admin");
         } else if (admin.role === "Nurse") {
-          return res.render("clinic");
+          res.render("clinic");
         }
       } else {
-        return res.status(401).send("Invalid password");
+        res.status(401).send("Invalid password");
       }
     } else {
-      const patient = await userService.verifyCredentials(username, password);
-      if (patient) {
-        return res.render('patients', { username }); // Render the patient handlebar
-      }
-  
-      // Render the login page with an error message if credentials are not valid
-      return res.render('login', { error: 'Invalid credentials' });
+      res.status(404).send("Admin not found");
     }
+  
+    const patient = await userService.verifyCredentials(username, password);
+    if (patient) {
+      return res.render('patients', { username }); // Render the patient handlebar
+    }
+  
+    // Render the login page with an error message if credentials are not valid
+    res.render('login', { error: 'Invalid credentials' });
   }
+  
 
     function requireAdmin(req, res, next) {
       if (!req.session.adminUsername) {
